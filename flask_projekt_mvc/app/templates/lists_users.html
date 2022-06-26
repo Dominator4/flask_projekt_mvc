@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> Przeglądaj użydkowników </h1>
+
+        <table>
+            <tr><th>Imię i nazwisko</th><th>Email</th><th>Edytuj</th>
+                <th>Usuń</th></tr>
+            {% for user in users %}
+            <tr>
+                <td> {{ user.firstname }} {{ user.lastname }} </td>
+                <td> {{ user.email }}</td>
+                <td> <a href="{{ url_for('user', id= user.id ) }}"> Przeglądaj profil </a> </td>
+                {% if current_user.status =='Admin' %}
+      <td><a href="{{ url_for('del_user', id= user.id ) }}"> Usuń użydkownika: {{ user.firstname }} {{ user.lastname }} </a><//td>
+{% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> Szczegóły oferty: </h1>
+
+    <div>
+<ul>
+      <li><a href="{{ url_for('user', id= user.id ) }}"> Wystawca: {{ user.firstname }} {{ user.lastname }} </a></li>
+        <li>Nazwa oferty: {{ offers.name }}</li>
+        <li>Treść: {{ offers.about_this }}</li>
+        <li>Kontakt: {{ user.contact }}</li>
+</ul>
+</div>
+
+
+
+{% endblock %}

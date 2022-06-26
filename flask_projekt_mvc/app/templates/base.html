@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Portal internetowy</title>
+        {% else %}
+        <title> Witamy na naszym Portalu z ofertami pracy!</title>
+        {% endif %}
+    </head>
+    <body>
+    <div>
+        Portal:
+        <a href="{{ url_for('index') }}"> strona główna</a>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}"> zaloguj </a>
+        {% else %}
+      <a href="{{ url_for('user', id= current_user.id ) }}"> profil </a>
+        <a href="{{ url_for('logout') }}"> wyloguj</a>
+        {% endif %}
+    </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

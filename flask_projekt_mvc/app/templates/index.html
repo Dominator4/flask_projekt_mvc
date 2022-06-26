@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Cześć, {{ current_user.firstname }}!</h1>
+        <p><a href="{{ url_for('your_lists_offers', email= current_user.email) }}"> Wyświetl oferty złożone przez ciebie </a></p>
+        <p> <a href="{{ url_for('lists_offers') }}"> Wyświetl listę offert </a></p>
+        <p><a href="{{ url_for('add_offers') }}"> Wystaw oferte </a></p>
+        <p><a href="{{ url_for('lists_users') }}"> Przeglądaj użytkowników </a></p>
+<p> Na naszym portalu możesz wystawiać oferty pracy  oraz przeglądać oferty które inni użytkownicy złożyli.</p>
+<p> mamy nadzieję, że skorzystaż na naszych usługach</p>
+{% endblock %}

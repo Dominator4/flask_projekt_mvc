@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> Lista ofert: </h1>
+<ul>
+    {% for offer in offers %}
+    <div>
+      <li><a href="{{ url_for('details_offers', id= offer.id ) }}"> {{ offer.name }} </a></li>
+      {% if current_user.id ==1 %}
+      <li><a href="{{ url_for('del_offers', id= offer.id ) }}"> Usuń ofertę </a></li>
+                {% endif %}
+</div>
+    {% endfor %}
+</ul>
+{% endblock %}

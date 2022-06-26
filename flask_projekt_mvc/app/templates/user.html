@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        <tr valign="top">
+            <td>
+                <h1>Użydkownik: {{ user.firstname }} {{ user.lastname }} </h1>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                {% if user.last_seen %}<p>Ostatnio aktywny: {{ user.last_seen }}</p>{% endif %}
+            </td>
+        </tr>
+    </table>
+    <hr>
+                {% if user == current_user or current_user.status =='Admin' %}
+      <p><a href="{{ url_for('edit_profile', id= user.id ) }}"> edytuj profil </a></p>
+      <p><a href="{{ url_for('reset_password', id= user.id ) }}"> Zresetuj hasło </a></p>
+                {% endif %}
+{% endblock %}
